@@ -126,6 +126,7 @@
     <ClCompile Include="..\..\..\..\..\Glacier%27s Laptop\source\repos\Ray-Tracing-In-One-Weekend\Ray-Tracing-In-One-Weekend\main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\..\..\..\Glacier%27s Laptop\source\repos\Ray-Tracing-In-One-Weekend\Ray-Tracing-In-One-Weekend\color.h" />
     <ClInclude Include="..\..\..\..\..\Glacier%27s Laptop\source\repos\Ray-Tracing-In-One-Weekend\Ray-Tracing-In-One-Weekend\ray.h" />
     <ClInclude Include="..\..\..\..\..\Glacier%27s Laptop\source\repos\Ray-Tracing-In-One-Weekend\Ray-Tracing-In-One-Weekend\vec3.h" />
   </ItemGroup>
