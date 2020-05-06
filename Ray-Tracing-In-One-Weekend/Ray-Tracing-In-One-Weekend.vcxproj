@@ -127,7 +127,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\..\..\Glacier%27s Laptop\source\repos\Ray-Tracing-In-One-Weekend\Ray-Tracing-In-One-Weekend\color.h" />
+    <ClInclude Include="..\..\..\..\..\Glacier%27s Laptop\source\repos\Ray-Tracing-In-One-Weekend\Ray-Tracing-In-One-Weekend\hittable.h" />
+    <ClInclude Include="..\..\..\..\..\Glacier%27s Laptop\source\repos\Ray-Tracing-In-One-Weekend\Ray-Tracing-In-One-Weekend\hittableList.h" />
     <ClInclude Include="..\..\..\..\..\Glacier%27s Laptop\source\repos\Ray-Tracing-In-One-Weekend\Ray-Tracing-In-One-Weekend\ray.h" />
+    <ClInclude Include="..\..\..\..\..\Glacier%27s Laptop\source\repos\Ray-Tracing-In-One-Weekend\Ray-Tracing-In-One-Weekend\sphere.h" />
     <ClInclude Include="..\..\..\..\..\Glacier%27s Laptop\source\repos\Ray-Tracing-In-One-Weekend\Ray-Tracing-In-One-Weekend\vec3.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
