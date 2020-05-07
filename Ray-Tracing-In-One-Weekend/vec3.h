@@ -57,6 +57,16 @@ public:
 
 	// Vector Utility Functions
 
+	inline static vec3 random()
+	{
+		return vec3(randomDouble(), randomDouble(), randomDouble());
+	}
+
+	inline static vec3 random(double min, double max)
+	{
+		return vec3(randomDouble(min, max), randomDouble(min, max), randomDouble(min, max));
+	}
+
 public:
 	double e[3]; // local data 
 };
@@ -117,6 +127,18 @@ inline vec3 cross(const vec3 &u, const vec3 &v)
 inline vec3 unit_vector(vec3 v)
 {
 	return v / v.length();
+}
+
+
+
+vec3 random_in_unit_sphere()  // returns random point in unit radius
+{
+	while (true)
+	{
+		auto p = vec3::random(-1, 1);
+		if (p.length_squared() >= 1) continue;
+		return p;
+	}
 }
 
 #endif // !VEC3_H

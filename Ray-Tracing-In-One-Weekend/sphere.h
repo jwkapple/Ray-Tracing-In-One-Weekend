@@ -10,13 +10,14 @@ class sphere : public hittable
 {
 public:
 	sphere() = default;
-	sphere(point3 cen, double r) : mCenter(cen), mRadius(r) {};
+	sphere(point3 cen, double r, vec3 color) : mCenter(cen), mRadius(r), mColor(color) {};
 
 	virtual bool hit(const ray& r, double tMin, double tMax, hitRecord& rec) const override;
 
 public:
 	point3 mCenter;
 	double mRadius;
+	vec3 mColor;
 };
 
 bool sphere::hit(const ray& r, double tMin, double tMax, hitRecord& rec) const
