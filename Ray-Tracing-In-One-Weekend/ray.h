@@ -8,7 +8,7 @@
 class ray
 {
 public:
-	ray() = default;
+	ray() = default; // Option::const vec3 &origin, const vec3 &direction
 	ray(const vec3 &origin, const vec3 &direction)
 		: mOrigin(origin), mDirection(direction)
 	{}
