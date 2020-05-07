@@ -1,39 +1,24 @@
-#include <iostream>
-#include "vec3.h"
-#include "ray.h"
+
+#include "rtweekend.h"
+
+#include "hittableList.h"
+#include "sphere.h"
 #include "color.h"
+#include <iostream>
 
-double hitSphere(const point3& center, double radius, const ray& ray)
+
+
+vec3 rayColor(const ray &r, const hittable& world)
 {
-	vec3 oc = ray.origin() - center;
-	auto a = ray.direction().length_squared();
-	auto half_b = dot(oc, ray.direction());
-	auto c = oc.length_squared() - radius * radius;
-	auto discriminant = half_b * half_b - a * c;
-
-	if (discriminant < 0)
-	{
-		return -1.0;
-	}
-	else
-	{
-		return (-half_b - sqrt(discriminant)) / a;
-	}
-}
-
-vec3 rayColor(const ray &r)
-{
-	auto t = hitSphere(point3(0, 0, -1), 0.5, r);
+	hitRecord rec;
 	
-	if (t > 0.0)
+	if (world.hit(r, 0, infinity, rec))
 	{
-		vec3 N = unit_vector(r.at(t) - vec3(0, 0, -1));
-
-		return 0.5 * color(N.x() + 1.0, N.y() + 1.0, N.z() + 1.0);
+		return 0.5 * (rec.normal + color(1, 1, 1));
 	}
 
 	vec3 unitDirection = unit_vector(r.direction());
-	t = 0.5 * (unitDirection.y() + 1.0); 
+	auto t = 0.5 * (unitDirection.y() + 1.0);
 	return (1.0 - t) * color(1.0, 1.0, 1.0) + t * color(0.5, 0.7, 1.0);
 }
 
@@ -51,6 +36,11 @@ int main()
 	vec3 vertical(0.0, 2.25, 0.0);
 	point3 lowerLeftCorner = origin - horizontal / 2 - vertical / 2 - vec3(0, 0, 1);
 
+
+	hittableList world;
+	world.add(make_shared<sphere>(point3(0, 0, -1), 0.5));
+	world.add(make_shared<sphere>(point3(0, -100.5, -1), 100));
+
 	for (int j = imageHeight-1; j >= 0; --j)
 	{
 		std::cerr << "\rScanlines remaining: " << j << ' ' << std::flush;
@@ -61,7 +51,7 @@ int main()
 
 			ray r(origin, lowerLeftCorner + u * horizontal + v * vertical);
 
-			color pixelColor = rayColor(r);
+			color pixelColor = rayColor(r, world);
 			write_color(std::cout, pixelColor);
 		}
 	}

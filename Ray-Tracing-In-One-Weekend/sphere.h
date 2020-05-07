@@ -21,7 +21,7 @@ public:
 
 bool sphere::hit(const ray& r, double tMin, double tMax, hitRecord& rec) const
 {
-	vec3 oc = r.origin - mCenter;
+	vec3 oc = r.origin() - mCenter;
 	auto a = r.direction().length_squared();
 	auto half_b = dot(oc, r.direction());
 	auto c = oc.length_squared() - mRadius * mRadius;
@@ -37,6 +37,7 @@ bool sphere::hit(const ray& r, double tMin, double tMax, hitRecord& rec) const
 			rec.t = tmp;
 			rec.p = r.at(rec.t);
 			vec3 outwardNormal = (rec.p - mCenter) / mRadius;
+			rec.setFaceNormal(r, outwardNormal);
 			return true;
 		} // Send hit record to Ray with hitRecord
 

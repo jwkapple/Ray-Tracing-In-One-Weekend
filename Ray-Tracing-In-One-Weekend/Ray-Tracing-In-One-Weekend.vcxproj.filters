@@ -38,5 +38,8 @@
     <ClInclude Include="..\..\..\..\..\Glacier%27s Laptop\source\repos\Ray-Tracing-In-One-Weekend\Ray-Tracing-In-One-Weekend\hittableList.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\..\..\Glacier%27s Laptop\source\repos\Ray-Tracing-In-One-Weekend\Ray-Tracing-In-One-Weekend\rtweekend.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
