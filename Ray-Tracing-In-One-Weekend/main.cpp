@@ -17,11 +17,14 @@ vec3 rayColor(const ray &r, const hittable& world, int depth)
 	if (depth <= 0)
 		return color(0, 0, 0);
 
-	if (world.hit(r, 0, infinity, rec))
+	// Some of the reflected rays hit the object they are reflecting off of not at exactly t = 0 
+	// So we need to ignore hits very near zero
+	if (world.hit(r, 0.001, infinity, rec))
 	{
-		point3 target = rec.p + rec.normal + random_in_unit_sphere();
+		point3 target = rec.p + rec.normal + random_unit_vector();
 		return 0.5 * rayColor(ray(rec.p, target - rec.p), world, depth-1);
 	}
+
 
 	vec3 unitDirection = unit_vector(r.direction());
 	auto t = 0.5 * (unitDirection.y() + 1.0);
@@ -41,6 +44,7 @@ int main()
 	hittableList world;
 	world.add(make_shared<sphere>(point3(0, 0, -1), 0.5, vec3(1,0,0)));
 	world.add(make_shared<sphere>(point3(0, -100.5, -1), 100, vec3(0,1,0)));
+
 	camera cam;
 
 	for (int j = imageHeight-1; j >= 0; --j)

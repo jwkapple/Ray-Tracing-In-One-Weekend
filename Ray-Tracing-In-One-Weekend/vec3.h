@@ -131,14 +131,12 @@ inline vec3 unit_vector(vec3 v)
 
 
 
-vec3 random_in_unit_sphere()  // returns random point in unit radius
+vec3 random_unit_vector()  // returns random point in unit radius
 {
-	while (true)
-	{
-		auto p = vec3::random(-1, 1);
-		if (p.length_squared() >= 1) continue;
-		return p;
-	}
+	auto a = randomDouble(0, 2 * pi);
+	auto z = randomDouble(-1, 1);
+	auto r = sqrt(1 - z * z);
+	return vec3(r*cos(a), r*sin(a), z);
 }
 
 #endif // !VEC3_H
