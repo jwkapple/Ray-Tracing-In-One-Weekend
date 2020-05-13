@@ -1,6 +1,7 @@
 
 #include "rtweekend.h"
 
+#include "material.h"
 #include "hittableList.h"
 #include "sphere.h"
 #include "color.h"
@@ -21,8 +22,11 @@ vec3 rayColor(const ray &r, const hittable& world, int depth)
 	// So we need to ignore hits very near zero
 	if (world.hit(r, 0.001, infinity, rec))
 	{
-		point3 target = rec.p + rec.normal + random_unit_vector();
-		return 0.5 * rayColor(ray(rec.p, target - rec.p), world, depth-1);
+		color attenuation;
+		ray scattered;
+		if (rec.matPtr->scatter(r, rec, attenuation, scattered))
+			return attenuation * rayColor(scattered, world, depth - 1);
+		return color(0);
 	}
 
 
@@ -42,8 +46,11 @@ int main()
 	std::cout << "P3\n" << imageWidth << ' ' << imageHeight << "\n255\n";
 
 	hittableList world;
-	world.add(make_shared<sphere>(point3(0, 0, -1), 0.5, vec3(1,0,0)));
-	world.add(make_shared<sphere>(point3(0, -100.5, -1), 100, vec3(0,1,0)));
+	world.add(make_shared<sphere>(point3(0, 0, -1), 0.5, make_shared<lambertian>(color(0.7, 0.3, 0.3))));
+	world.add(make_shared<sphere>(point3(0, -100.5, -1), 100, make_shared<lambertian>(color(0.8, 0.8, 0.0))));
+
+	world.add(make_shared<sphere>(point3(1, 0, -1), 0.5, make_shared<metal>(color(.8, .6, .2))));
+	world.add(make_shared<sphere>(point3(-1, 0, -1), 0.5, make_shared<metal>(color(.8, .8, .8))));
 
 	camera cam;
 

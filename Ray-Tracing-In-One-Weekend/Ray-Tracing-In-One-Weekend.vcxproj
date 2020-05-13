@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -130,6 +130,7 @@
     <ClInclude Include="..\..\..\..\..\Glacier%27s Laptop\source\repos\Ray-Tracing-In-One-Weekend\Ray-Tracing-In-One-Weekend\color.h" />
     <ClInclude Include="..\..\..\..\..\Glacier%27s Laptop\source\repos\Ray-Tracing-In-One-Weekend\Ray-Tracing-In-One-Weekend\hittable.h" />
     <ClInclude Include="..\..\..\..\..\Glacier%27s Laptop\source\repos\Ray-Tracing-In-One-Weekend\Ray-Tracing-In-One-Weekend\hittableList.h" />
+    <ClInclude Include="..\..\..\..\..\Glacier%27s Laptop\source\repos\Ray-Tracing-In-One-Weekend\Ray-Tracing-In-One-Weekend\material.h" />
     <ClInclude Include="..\..\..\..\..\Glacier%27s Laptop\source\repos\Ray-Tracing-In-One-Weekend\Ray-Tracing-In-One-Weekend\ray.h" />
     <ClInclude Include="..\..\..\..\..\Glacier%27s Laptop\source\repos\Ray-Tracing-In-One-Weekend\Ray-Tracing-In-One-Weekend\rtweekend.h" />
     <ClInclude Include="..\..\..\..\..\Glacier%27s Laptop\source\repos\Ray-Tracing-In-One-Weekend\Ray-Tracing-In-One-Weekend\sphere.h" />

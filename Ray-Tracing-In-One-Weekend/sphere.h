@@ -10,14 +10,14 @@ class sphere : public hittable
 {
 public:
 	sphere() = default;
-	sphere(point3 cen, double r, vec3 color) : mCenter(cen), mRadius(r), mColor(color) {};
+	sphere(point3 cen, double r, shared_ptr<material> m) : mCenter(cen), mRadius(r), mMatPtr(m) {};
 
 	virtual bool hit(const ray& r, double tMin, double tMax, hitRecord& rec) const override;
 
 public:
 	point3 mCenter;
 	double mRadius;
-	vec3 mColor;
+	shared_ptr<material> mMatPtr;
 };
 
 bool sphere::hit(const ray& r, double tMin, double tMax, hitRecord& rec) const
@@ -37,6 +37,7 @@ bool sphere::hit(const ray& r, double tMin, double tMax, hitRecord& rec) const
 		{
 			rec.t = tmp;
 			rec.p = r.at(rec.t);
+			rec.matPtr = mMatPtr;
 			vec3 outwardNormal = (rec.p - mCenter) / mRadius;
 			rec.setFaceNormal(r, outwardNormal);
 			return true;
@@ -47,6 +48,7 @@ bool sphere::hit(const ray& r, double tMin, double tMax, hitRecord& rec) const
 		{
 			rec.t = tmp;
 			rec.p = r.at(rec.t);
+			rec.matPtr = mMatPtr;
 			vec3 outwardNormal = (rec.p - mCenter) / mRadius;
 			rec.setFaceNormal(r, outwardNormal);
 			return true;

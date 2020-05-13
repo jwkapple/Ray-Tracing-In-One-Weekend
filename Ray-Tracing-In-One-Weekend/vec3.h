@@ -12,6 +12,7 @@ class vec3
 {
 public:
 	vec3() : e{ 0, 0, 0 } {}
+	vec3(double e0) : e{ e0, e0, e0 } {}
 	vec3(double e0, double e1, double e2) : e{ e0, e1, e2 } {}
 
 	double x() const { return e[0]; }
@@ -137,6 +138,11 @@ vec3 random_unit_vector()  // returns random point in unit radius
 	auto z = randomDouble(-1, 1);
 	auto r = sqrt(1 - z * z);
 	return vec3(r*cos(a), r*sin(a), z);
+}
+
+vec3 reflect(const vec3& v, const vec3& n)
+{
+	return v - 2 * dot(v, n) * n;
 }
 
 #endif // !VEC3_H
