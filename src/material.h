@@ -82,7 +82,7 @@ class dielectric : public material {
 
 			vec3 unitDirection = unit_vector(r_in.direction());
 			double cos_theta = fmin(dot(-unitDirection, rec.normal), 1.0);
-			double sin_theta = 1 - sqrt(cos_theta * cos_theta);
+			double sin_theta = sqrt(1 - cos_theta * cos_theta);
 			if(etai_over_etat * sin_theta > 1.0)
 			{
 				vec3 reflected = reflect(unitDirection, rec.normal);

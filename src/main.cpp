@@ -53,7 +53,8 @@ int main()
 	world.add(make_shared<sphere>(point3(-1,0,-1), 0.5, make_shared<dielectric>(1.5)));
 	world.add(make_shared<sphere>(point3(-1,0,-1), -0.45, make_shared<dielectric>(1.5)));
 
-	camera cam;
+	auto R = cos(pi / 4);
+	camera cam(90, double(imageWidth)/double(imageHeight));
 
 	for (int j = imageHeight-1; j >= 0; --j)
 	{
