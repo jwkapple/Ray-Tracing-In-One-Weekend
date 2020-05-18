@@ -17,7 +17,7 @@ public:
 		vec3 u, v, w;
 
 		auto theta = degrees_to_radians(vFov);
-		auto half_height = tan(theta/ 2);
+		auto half_height = tan(theta / 2);
 		auto half_width = aspectRatio * half_height;
 		w = unit_vector(lookFrom - lookAt);
 		u = unit_vector(cross(w, vUp));
